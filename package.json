@@ -1,0 +1,20 @@
+{
+  "name": "clir-omeka-s-theme",
+  "version": "0.0.1",
+  "description": "Council on Library and Information Resources Hidden Collections Registry Theme",
+  "main": "gulpfile.js",
+  "author": "Council on Library and Information Resources <info@clir.org>",
+  "license": "Apache2",
+  "private": true,
+  "dependencies": {
+    "autoprefixer": "^10.2.6",
+    "browser-sync": "^2.26.14",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-livereload": "^4.0.2",
+    "gulp-load-plugins": "^2.0.7",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "postcss": "^8.3.0"
+  }
+}
