@@ -1,0 +1,43 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+
+// @see https://stackoverflow.com/questions/972010/get-first-100-characters-from-string-respecting-full-words#comment62419378_4601451
+// there's probably a helper in Omeka somewhere though...
+function truncate($value, $limit = 100, $end = "...")
+{
+    $valuelen = mb_strlen($value);
+    return $limit < $valuelen ? mb_substr($value, 0, mb_strrpos($value, ' ', $limit - $valuelen)) . $end : $value;
+}
+?>
+
+<div class="">
+  <?php if ($this->heading): ?>
+  <h2><?php echo $this->heading; ?></h2>
+  <?php endif; ?>
+  <div class="row" data-masonry='{"percentPosition": true }'>
+  <?php
+  $headingTerm = $this->siteSetting('browse_heading_property_term');
+  $bodyTerm = $this->siteSetting('browse_body_property_term');
+  foreach ($this->resources as $resource):
+      $heading = $headingTerm ? $resource->value($headingTerm, ['default' => $translate('[Untitled]')]) : $resource->displayTitle();
+      // $body = $bodyTerm ? $resource->value($bodyTerm) : $resource->displayDescription();
+      $abstract = $abstractTerm ? $resource->value($abstractTerm) : $resource->value('dg:abstract_or_summary_description');
+
+  ?>
+
+  <div class="col-sm-6 col-lg-3 mb-4">
+    <div class="card">
+      <?php echo $resource->linkRaw($this->thumbnail($resource, 'medium', ['title' => $heading]), [], ['class' => 'thumcard-img-topbnail']); ?>
+      <div class="card-body">
+        <h3 class="card-title"><?php echo $resource->link($heading); ?></h3>
+        <?php if ($abstract): ?>
+        <p class="card-text"><?php echo truncate($escape($abstract)); ?></p>
+        <?php endif; ?>
+      </div>
+    </div>
+
+  </div>
+  <?php endforeach; ?>
+  </div>
+</div>
