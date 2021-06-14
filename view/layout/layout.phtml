@@ -8,13 +8,15 @@ $this->headTitle($siteTitle)->setSeparator(' · ');
 $this->headTitle()->append($this->setting('installation_title', 'Omeka S'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/main.css'));
 $this->headLink()->prependStylesheet('https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css');
+$this->headLink()->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 $this->headScript()->prependFile('https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js', 'Omeka');
 $this->headScript()->prependFile('https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js', 'Omeka');
 $this->jsTranslate();
 $this->trigger('view.layout');
 $userBar = $this->userBar();
 
-$logo = $this->themeSettingAssetUrl('header') ? $this->themeSettingAssetUrl('header') : 'https://placeimg.com/50/50/any';
+$logo = $this->themeSettingAssetUrl('logo') ? $this->themeSettingAssetUrl('logo') : 'https://placeimg.com/50/50/any';
+$header = $this->themeSettingAssetUrl('header') ? $this->themeSettingAssetUrl('header') : 'https://placeimg.com/783/834/any';
 ?>
 <?php echo $this->doctype(); ?>
 <?php echo $this->htmlElement('html'); ?>
@@ -81,14 +83,37 @@ $logo = $this->themeSettingAssetUrl('header') ? $this->themeSettingAssetUrl('hea
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                   </li> -->
                 </ul>
-                <form class="d-flex">
+                <!-- <form class="d-flex">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                </form> -->
               </div>
             </div>
           </nav>
         </header>
+
+        <section id="imgBanner" style="background-image: url('<?php echo $header ?>')">
+          <div class="container">
+            <div class="searchbox px-4 py-5 my-5 text-center">
+              <h1 class="display-5">Hidden Collections Registry</h1>
+              <div class="col-lg-5 mx-auto">
+                  <?php echo $this->partial('common/search-form'); ?>
+                  <div class="sample-searches">
+                    <p>
+                      <strong>Sample Searches:</strong>
+                      <span id="samples">
+                        <a class="btn btn-sm btn-inverse-ghost" aria-label="Sample Search: &quot;Natural History&quot;" href="/projects?search=Natural History">Natural History</a>
+                        <a class="btn btn-sm btn-inverse-ghost" aria-label="Sample Search: Ethnomusicology" href="/projects?search=Ethnomusicology">Ethnomusicology</a>
+                        <a class="btn btn-sm btn-inverse-ghost" aria-label="Sample Search: Mapas históricos" href="/projects?search=Mapas%20históricos">Mapas históricos</a>
+                      </span>
+                    </p>
+                  </div>
+              </div>
+
+
+            </div>
+          </div>
+        </section>
 
         <main id="main-container" class="container py-5" role="main" aria-label="Main content">
           <div class="row">
