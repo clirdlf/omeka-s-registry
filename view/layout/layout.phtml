@@ -16,7 +16,6 @@ $this->trigger('view.layout');
 $userBar = $this->userBar();
 
 $logo = $this->themeSettingAssetUrl('logo') ? $this->themeSettingAssetUrl('logo') : 'https://placeimg.com/50/50/any';
-$header = $this->themeSettingAssetUrl('header') ? $this->themeSettingAssetUrl('header') : 'https://placeimg.com/783/834/any';
 ?>
 <?php echo $this->doctype(); ?>
 <?php echo $this->htmlElement('html'); ?>
@@ -92,28 +91,8 @@ $header = $this->themeSettingAssetUrl('header') ? $this->themeSettingAssetUrl('h
           </nav>
         </header>
 
-        <section id="imgBanner" style="background-image: url('<?php echo $header ?>')">
-          <div class="container">
-            <div class="searchbox px-4 py-5 my-5 text-center">
-              <h1 class="display-5">Hidden Collections Registry</h1>
-              <div class="col-lg-5 mx-auto">
-                  <?php echo $this->partial('common/search-form'); ?>
-                  <div class="sample-searches">
-                    <p>
-                      <strong>Sample Searches:</strong>
-                      <span id="samples">
-                        <a class="btn btn-sm btn-inverse-ghost" aria-label="Sample Search: &quot;Natural History&quot;" href="/projects?search=Natural History">Natural History</a>
-                        <a class="btn btn-sm btn-inverse-ghost" aria-label="Sample Search: Ethnomusicology" href="/projects?search=Ethnomusicology">Ethnomusicology</a>
-                        <a class="btn btn-sm btn-inverse-ghost" aria-label="Sample Search: Mapas históricos" href="/projects?search=Mapas%20históricos">Mapas históricos</a>
-                      </span>
-                    </p>
-                  </div>
-              </div>
-
-
-            </div>
-          </div>
-        </section>
+        <!-- TODO: collapse on page view -->
+        <?php echo $this->partial('common/large-banner'); ?>
 
         <main id="main-container" class="container py-5" role="main" aria-label="Main content">
           <div class="row">

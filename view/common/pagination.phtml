@@ -1,0 +1,23 @@
+<?php
+$translate = $this->plugin('translate');
+$next = $translate('Next');
+$previous = $translate('Previous');
+?>
+<?php if ($prevPage || $nextPage): ?>
+<div class="mt-5">
+  <nav aria-label="<?php echo $translate('Page Navigation'); ?>">
+    <ul class="pagination">
+      <li class="page-item">
+        <a href="page-link" href="<?php echo $prevPage ?  $prevPage->siteUrl() : ''; ?>">
+          <?php echo $previous ?>
+        </a>
+        </li>
+      <li class="page-item">
+        <a class="page-link" href="<?php echo $nextPage ? $nextPage->siteUrl() : ''; ?>">
+          <?php echo $next ?>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<?php endif; ?>
